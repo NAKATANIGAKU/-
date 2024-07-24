@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>マイインターンシップアプリ</title>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}">ホーム</a> |
+        <a href="{{ url_for('about') }}">About</a> |
+        <a href="{{ url_for('apply') }}">新規申請</a> |
+        <a href="{{ url_for('calendar') }}">カレンダー</a>
+    </nav>
+    <h1>{{ message }}</h1>
+    <p>インターンシップの申請、管理、閲覧ができます。</p>
+</body>
+</html>

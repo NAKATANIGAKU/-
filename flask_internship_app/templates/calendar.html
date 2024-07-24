@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>インターンシップカレンダー</title>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}">ホーム</a> |
+        <a href="{{ url_for('about') }}">About</a> |
+        <a href="{{ url_for('apply') }}">新規申請</a>
+    </nav>
+    <h1>インターンシップカレンダー</h1>
+    {% if internships %}
+        <ul>
+        {% for internship in internships %}
+            <li>
+                {{ internship.company }}: {{ internship.start_date.strftime('%Y-%m-%d') }} to {{ internship.end_date.strftime('%Y-%m-%d') }}
+                <a href="{{ url_for('edit', id=internship.id) }}">編集</a>
+                <form method="POST" action="{{ url_for('delete', id=internship.id) }}" style="display: inline;">
+                    <input type="submit" value="削除" onclick="return confirm('本当に削除しますか？');">
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>登録されているインターンシップはありません。</p>
+    {% endif %}
+</body>
+</html>
